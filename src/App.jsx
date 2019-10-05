@@ -1,11 +1,15 @@
 import React from 'react'
-import HelloWorld from 'components/HelloWorld'
+import MovieList from 'components/MovieList'
+import './App.scss'
 
 const App = () => (
-  <>
-    <h1>Minimal React Starter Kit</h1>
-    <HelloWorld />
-  </>
+  <div className="App">
+    <header>Header</header>
+    <main>
+      <MovieList />
+      <section className="MovieDescription">Movie Description</section>
+    </main>
+  </div>
 )
 
 export default App
