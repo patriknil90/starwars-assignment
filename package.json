@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "starwars-assignment",
   "version": "1.0.0",
-  "repository": "https://github.com/patriknil90/minimal-react-boilerplate",
+  "repository": "https://github.com/patriknil90/starwars-assignment",
   "author": "Patrik Nilsson",
   "license": "MIT",
   "scripts": {
