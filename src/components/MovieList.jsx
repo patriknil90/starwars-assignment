@@ -1,9 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-class MovieList extends React.Component {
-  render() {
-    return <section>Movie list</section>
-  }
-}
+const movieList = ({ movies }) => (
+  <section>
+    <ul>
+      {movies.map(movie => (
+        <li key={movie.id} className="MovieItem">
+          <span className="MovieItem_title">{movie.fields.title}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+)
 
-export default MovieList
+const mapStateToProps = state => ({
+  movies: state.movies.movies,
+})
+
+export default connect(mapStateToProps)(movieList)
