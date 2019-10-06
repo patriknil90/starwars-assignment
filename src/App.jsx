@@ -3,13 +3,18 @@ import MovieList from 'components/MovieList'
 import './App.scss'
 import { connect } from 'react-redux'
 import fetchMovies from 'actions/movies'
+import Sort from 'components/Sort'
+import Filter from 'components/Filter'
 
 class App extends React.Component {
   componentDidMount = () => this.props.fetchMovies()
 
   render = () => (
     <div className="App">
-      <header>Header</header>
+      <header>
+        <Sort />
+        <Filter />
+      </header>
       <main>
         <MovieList />
         <section className="MovieDescription">Movie Description</section>
