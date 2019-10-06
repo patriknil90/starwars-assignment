@@ -1,15 +1,28 @@
 import React from 'react'
 import MovieList from 'components/MovieList'
 import './App.scss'
+import { connect } from 'react-redux'
+import fetchMovies from 'actions/movies'
 
-const App = () => (
-  <div className="App">
-    <header>Header</header>
-    <main>
-      <MovieList />
-      <section className="MovieDescription">Movie Description</section>
-    </main>
-  </div>
-)
+class App extends React.Component {
+  componentDidMount = () => this.props.fetchMovies()
 
-export default App
+  render = () => (
+    <div className="App">
+      <header>Header</header>
+      <main>
+        <MovieList />
+        <section className="MovieDescription">Movie Description</section>
+      </main>
+    </div>
+  )
+}
+
+const mapDispatchToProps = dispatch => ({
+  fetchMovies: () => dispatch(fetchMovies()),
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(App)
