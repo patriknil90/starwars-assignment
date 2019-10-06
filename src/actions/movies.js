@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import { FETCH_MOVIES_URL } from 'appConfig'
 import {
   FETCH_MOVIES_START,
   FETCH_MOVIES_SUCCESS,
@@ -21,9 +22,11 @@ const fetchMoviesFail = error => ({
 
 const fetchMovies = () => {
   return dispatch => {
-    dispatch(fetchMoviesStart)
-    return Axios.get('https://star-wars-api.herokuapp.com/films')
-      .then(res => dispatch(fetchMoviesSuccess(res.data)))
+    dispatch(fetchMoviesStart())
+    return Axios.get(FETCH_MOVIES_URL)
+      .then(res => {
+        dispatch(fetchMoviesSuccess(res.data))
+      })
       .catch(err => dispatch(fetchMoviesFail(err)))
   }
 }

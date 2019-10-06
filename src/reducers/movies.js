@@ -1,4 +1,3 @@
-import movies from 'movieMocks'
 import {
   FETCH_MOVIES_START,
   FETCH_MOVIES_SUCCESS,
@@ -6,7 +5,7 @@ import {
 } from 'actions/types'
 
 const initialState = {
-  movies,
+  movies: [],
   loading: false,
   error: null,
 }
