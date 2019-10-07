@@ -7,7 +7,7 @@ const MovieItem = ({ movie }) => {
         Episode {movie.fields.episode_id}
       </span>
       <span className="MovieItem_title">{movie.fields.title}</span>
-      <span className="MovieItem_year">{movie.fields.created}</span>
+      <span className="MovieItem_year">{movie.fields.release_date}</span>
     </li>
   )
 }
