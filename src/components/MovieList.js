@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import MovieItem from 'components/MovieItem'
 
 const movieList = ({ movies, loading, error }) => (
-  <section>
+  <section id="MovieList">
     {movies && !loading && !error && (
       <ul>
         {movies.map(movie => (
