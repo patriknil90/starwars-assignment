@@ -18,18 +18,24 @@ const movieList = ({ movies, loading, error }) => (
   </section>
 )
 
-const getSortedMovies = (sortOrder, movies) => {
-  if (!sortOrder) return movies
+const getVisibleMovies = (sortOrder, filterValue, movies) => {
+  let visibleMovies = [...movies]
 
-  return [...movies].sort(
-    (movie1, movie2) => movie1.fields[sortOrder] - movie2.fields[sortOrder]
+  if (sortOrder)
+    visibleMovies = visibleMovies.sort(
+      (movie1, movie2) => movie1.fields[sortOrder] - movie2.fields[sortOrder]
+    )
+
+  if (filterValue.trim().length === 0) return visibleMovies
+  return visibleMovies.filter(movie =>
+    movie.fields.title.toLowerCase().includes(filterValue.toLowerCase())
   )
 }
 
 const mapStateToProps = state => {
-  const { movies, loading, error, sortOrder } = state.movies
+  const { movies, loading, error, sortOrder, filterValue } = state.movies
   return {
-    movies: getSortedMovies(sortOrder, movies),
+    movies: getVisibleMovies(sortOrder, filterValue, movies),
     loading,
     error,
   }
