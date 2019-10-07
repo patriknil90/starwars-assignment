@@ -2,8 +2,8 @@ import React from 'react'
 
 const Filter = () => {
   return (
-    <div className="Filter">
-      <input type="text" />
+    <div id="Filter">
+      <input id="Filter_input" type="text" />
     </div>
   )
 }
