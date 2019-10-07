@@ -18,10 +18,21 @@ const movieList = ({ movies, loading, error }) => (
   </section>
 )
 
-const mapStateToProps = state => ({
-  movies: state.movies.movies,
-  loading: state.movies.loading,
-  error: state.movies.error,
-})
+const getSortedMovies = (sortOrder, movies) => {
+  if (!sortOrder) return movies
+
+  return [...movies].sort(
+    (movie1, movie2) => movie1.fields[sortOrder] - movie2.fields[sortOrder]
+  )
+}
+
+const mapStateToProps = state => {
+  const { movies, loading, error, sortOrder } = state.movies
+  return {
+    movies: getSortedMovies(sortOrder, movies),
+    loading,
+    error,
+  }
+}
 
 export default connect(mapStateToProps)(movieList)
