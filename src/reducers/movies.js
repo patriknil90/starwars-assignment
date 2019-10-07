@@ -3,6 +3,7 @@ import {
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAIL,
   SET_SORT_ORDER,
+  SET_FILTER_VALUE,
 } from 'actions/types'
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   loading: false,
   error: null,
   sortOrder: null,
+  filterValue: '',
 }
 
 export default (state = initialState, action) => {
@@ -22,6 +24,8 @@ export default (state = initialState, action) => {
       return { ...state, loading: false, error: action.error }
     case SET_SORT_ORDER:
       return { ...state, sortOrder: action.sortOrder }
+    case SET_FILTER_VALUE:
+      return { ...state, filterValue: action.filterValue }
     default:
       return state
   }

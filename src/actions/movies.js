@@ -5,6 +5,7 @@ import {
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAIL,
   SET_SORT_ORDER,
+  SET_FILTER_VALUE,
 } from './types'
 
 const fetchMoviesStart = () => ({
@@ -35,4 +36,9 @@ export const fetchMovies = () => {
 export const sortMovies = sortOrder => ({
   type: SET_SORT_ORDER,
   sortOrder,
+})
+
+export const filterMovies = filterValue => ({
+  type: SET_FILTER_VALUE,
+  filterValue,
 })
