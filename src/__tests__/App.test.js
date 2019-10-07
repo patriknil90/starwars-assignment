@@ -46,7 +46,7 @@ describe('<App />', () => {
 
   it('sorts movies', () => {
     wrapper.update()
-    const sortSelect = wrapper.find('#Sort')
+    const sortSelect = wrapper.find('#Sort_select')
 
     // By episode number
     sortSelect.simulate('change', { target: { value: SORT_VALUES.EPISODE } })
