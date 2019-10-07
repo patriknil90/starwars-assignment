@@ -14,7 +14,7 @@ describe('<App />', () => {
   // Helper function
   const renderedMoviesMatchExpected = (wrapper, expectedMoviesList) => {
     const movieList = wrapper.find('#MovieList')
-    expect(movieList.find('li')).toHaveLength(moviesMock.length)
+    expect(movieList.find('li')).toHaveLength(expectedMoviesList.length)
 
     movieList.find('li').forEach((listItem, index) => {
       expect(
@@ -44,23 +44,21 @@ describe('<App />', () => {
     renderedMoviesMatchExpected(wrapper, moviesMock)
   })
 
-  const sortSelect = () => wrapper.find('#Sort_select')
-  const filterInput = () => wrapper.find('#Filter_input')
-
   it('sorts movies', () => {
     wrapper.update()
+    const sortSelect = wrapper.find('#Sort_select')
 
     // By episode number
-    sortSelect().simulate('change', { target: { value: SORT_VALUES.EPISODE } })
-    let sortedMovies = moviesMock.sort(
+    sortSelect.simulate('change', { target: { value: SORT_VALUES.EPISODE } })
+    let sortedMovies = [...moviesMock].sort(
       (movie1, movie2) =>
         movie1.fields[SORT_VALUES.EPISODE] - movie2.fields[SORT_VALUES.EPISODE]
     )
     renderedMoviesMatchExpected(wrapper, sortedMovies)
 
     // By year
-    sortSelect().simulate('change', { target: { value: SORT_VALUES.YEAR } })
-    sortedMovies = moviesMock.sort(
+    sortSelect.simulate('change', { target: { value: SORT_VALUES.YEAR } })
+    sortedMovies = [...moviesMock].sort(
       (movie1, movie2) =>
         movie1.fields[SORT_VALUES.YEAR] - movie2.fields[SORT_VALUES.YEAR]
     )
@@ -69,29 +67,35 @@ describe('<App />', () => {
 
   it('filters movies', () => {
     wrapper.update()
+    const filterInput = wrapper.find('#Filter_input')
 
-    filterInput().simulate('change', {
+    filterInput.simulate('change', {
       target: { value: 'The Rise of Skywalker' },
     })
+    wrapper.update()
     renderedMoviesMatchExpected(wrapper, [])
 
     const expectedMovies = [moviesMock[2], moviesMock[4], moviesMock[5]]
-    filterInput().simulate('change', {
+    filterInput.simulate('change', {
       target: { value: 'of the' },
     })
     renderedMoviesMatchExpected(wrapper, expectedMovies)
   })
 
   it('sorts filtered movies', () => {
-    sortSelect().simulate('change', { target: { value: SORT_VALUES.EPISODE } })
-    filterInput().simulate('change', {
+    wrapper.update()
+    const sortSelect = wrapper.find('#Sort_select')
+    const filterInput = wrapper.find('#Filter_input')
+
+    sortSelect.simulate('change', { target: { value: SORT_VALUES.EPISODE } })
+    filterInput.simulate('change', {
       target: { value: 'of the' },
     })
 
-    const expectedMovies = [moviesMock[2], moviesMock[4], moviesMock[5]].sort(
-      (movie1, movie2) =>
-        movie1.fields[SORT_VALUES.EPISODE] - movie2.fields[SORT_VALUES.EPISODE]
-    )
-    renderedMoviesMatchExpected(wrapper, expectedMovies)
+    renderedMoviesMatchExpected(wrapper, [
+      moviesMock[4],
+      moviesMock[5],
+      moviesMock[2],
+    ])
   })
 })
