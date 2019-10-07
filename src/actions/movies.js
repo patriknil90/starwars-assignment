@@ -4,6 +4,7 @@ import {
   FETCH_MOVIES_START,
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAIL,
+  SET_SORT_ORDER,
 } from './types'
 
 const fetchMoviesStart = () => ({
@@ -20,7 +21,7 @@ const fetchMoviesFail = error => ({
   error,
 })
 
-const fetchMovies = () => {
+export const fetchMovies = () => {
   return dispatch => {
     dispatch(fetchMoviesStart())
     return Axios.get(FETCH_MOVIES_URL)
@@ -31,4 +32,7 @@ const fetchMovies = () => {
   }
 }
 
-export default fetchMovies
+export const sortMovies = sortOrder => ({
+  type: SET_SORT_ORDER,
+  sortOrder,
+})
