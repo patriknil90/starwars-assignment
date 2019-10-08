@@ -1,15 +1,25 @@
+$border-color: #e5e5e5;
+$border: 1px solid $border-color;
+
 .App {
   margin: 0;
 
   main {
     display: flex;
     flex-wrap: wrap;
+    border-top: $border;
 
     > section {
       flex-grow: 1;
       flex-basis: 0;
-      min-width: 250px;
-      min-height: 400px;
+      min-width: 330px;
+      border-bottom: $border;
+
+      @media screen and (min-width: 330px) {
+        &:first-child {
+          border-right: $border;
+        }
+      }
     }
   }
 }
