@@ -111,16 +111,12 @@ describe('<App />', () => {
       .simulate('click')
 
     const movieTitle = wrapper.find('#MovieDescription_title')
-    const movieOpeningCrawl = wrapper.find('#MovieDescription_opening-crawl')
     const movieDirector = wrapper.find('#MovieDescription_director')
 
     const expectedSelectedMovie = moviesMock[2]
     expect(movieTitle.render().text()).toBe(expectedSelectedMovie.fields.title)
-    expect(movieOpeningCrawl.render().text()).toBe(
-      expectedSelectedMovie.fields.opening_crawl
-    )
     expect(movieDirector.render().text()).toBe(
-      expectedSelectedMovie.fields.director
+      `Directed by: ${expectedSelectedMovie.fields.director}`
     )
   })
 })
