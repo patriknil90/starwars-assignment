@@ -1,5 +1,41 @@
+@import 'src/_general';
+
 .MovieItem {
   &:hover {
     cursor: pointer;
+  }
+
+  color: #23478e;
+  padding: 10px 0;
+  box-sizing: border-box;
+  border-bottom: $border;
+  display: flex;
+  align-items: center;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  span {
+    padding-right: 10px;
+
+    &:first-child {
+      padding-left: 10px;
+    }
+  }
+
+  .MovieItem_episode {
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  
+  .MovieItem_title {
+    font-weight: 400;
+    font-size: 14px;
+  }
+  
+  .MovieItem_release-date {
+    font-size: 10px;
+    margin-left: auto;
   }
 }

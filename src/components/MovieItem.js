@@ -13,7 +13,9 @@ const MovieItem = ({ movie, setSelectedMovie }) => {
         Episode {movie.fields.episode_id}
       </span>
       <span className="MovieItem_title">{movie.fields.title}</span>
-      <span className="MovieItem_year">{movie.fields.release_date}</span>
+      <span className="MovieItem_release-date">
+        {movie.fields.release_date}
+      </span>
     </li>
   )
 }

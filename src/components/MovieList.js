@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import MovieItem from 'components/MovieItem'
 import { SORT_VALUES } from 'utils/constants'
+import './MovieList.scss'
 
 const movieList = ({ movies, loading, error }) => (
   <section id="MovieList">
