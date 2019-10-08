@@ -1,8 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { setSelectedMovie } from 'actions/movies'
+import './MovieItem.scss'
 
-const MovieItem = ({ movie }) => {
+const MovieItem = ({ movie, setSelectedMovie }) => {
+  const onItemClick = () => setSelectedMovie(movie.id)
+
   return (
-    <li key={movie.id} className="MovieItem">
+    // eslint-disable-next-line
+    <li key={movie.id} onClick={onItemClick} className="MovieItem">
       <span className="MovieItem_episode">
         Episode {movie.fields.episode_id}
       </span>
@@ -12,4 +18,11 @@ const MovieItem = ({ movie }) => {
   )
 }
 
-export default MovieItem
+const mapDispatchToProps = dispatch => ({
+  setSelectedMovie: movieId => dispatch(setSelectedMovie(movieId)),
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(MovieItem)
