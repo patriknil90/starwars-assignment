@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import MovieItem from 'components/MovieItem'
+import { SORT_VALUES } from 'utils/constants'
 
 const movieList = ({ movies, loading, error }) => (
   <section id="MovieList">
@@ -22,9 +23,12 @@ const getVisibleMovies = (sortOrder, filterValue, movies) => {
   let visibleMovies = [...movies]
 
   if (sortOrder)
-    visibleMovies = visibleMovies.sort(
-      (movie1, movie2) => movie1.fields[sortOrder] - movie2.fields[sortOrder]
-    )
+    visibleMovies = visibleMovies.sort((movie1, movie2) => {
+      const movie1Val = movie1.fields[sortOrder]
+      const movie2Val = movie2.fields[sortOrder]
+      if (sortOrder !== SORT_VALUES.RELEASE_DATE) return movie1Val - movie2Val
+      return new Date(movie1Val).getTime() - new Date(movie2Val).getTime()
+    })
 
   if (filterValue.trim().length === 0) return visibleMovies
   return visibleMovies.filter(movie =>

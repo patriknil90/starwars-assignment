@@ -14,7 +14,7 @@ const Sort = ({ sortMovies }) => {
       <select id="Sort_select" onChange={onSortChange}>
         <option>Sort by...</option>
         <option value={SORT_VALUES.EPISODE}>Episode</option>
-        <option value={SORT_VALUES.YEAR}>Year</option>
+        <option value={SORT_VALUES.RELEASE_DATE}>Year</option>
       </select>
     </div>
   )

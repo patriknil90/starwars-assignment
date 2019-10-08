@@ -57,10 +57,13 @@ describe('<App />', () => {
     renderedMoviesMatchExpected(wrapper, sortedMovies)
 
     // By year
-    sortSelect.simulate('change', { target: { value: SORT_VALUES.YEAR } })
+    sortSelect.simulate('change', {
+      target: { value: SORT_VALUES.RELEASE_DATE },
+    })
     sortedMovies = [...moviesMock].sort(
       (movie1, movie2) =>
-        movie1.fields[SORT_VALUES.YEAR] - movie2.fields[SORT_VALUES.YEAR]
+        movie1.fields[SORT_VALUES.RELEASE_DATE] -
+        movie2.fields[SORT_VALUES.RELEASE_DATE]
     )
     renderedMoviesMatchExpected(wrapper, sortedMovies)
   })
