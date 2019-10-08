@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import './MovieDescription.scss'
 
 const MovieDescription = ({ selectedMovie }) => {
   return (
@@ -7,7 +8,7 @@ const MovieDescription = ({ selectedMovie }) => {
       {!selectedMovie ? (
         <div id="MovieDescription_no-movie-selected">No movie selected</div>
       ) : (
-        <>
+        <div id="MovieDescription_selected-movie">
           <h1 id="MovieDescription_title">{selectedMovie.fields.title}</h1>
           <p id="MovieDescription_opening-crawl">
             {selectedMovie.fields.opening_crawl}
@@ -15,7 +16,7 @@ const MovieDescription = ({ selectedMovie }) => {
           <p id="MovieDescription_director">
             Directed by: {selectedMovie.fields.director}
           </p>
-        </>
+        </div>
       )}
     </section>
   )

@@ -1,2 +1,5 @@
 $border-color: #e5e5e5;
 $border: 1px solid $border-color;
+
+$colored-font-color: #23478e;
+$dark_colored-font-color: darken($colored-font-color, 15%);
