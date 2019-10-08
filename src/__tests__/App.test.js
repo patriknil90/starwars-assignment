@@ -62,8 +62,8 @@ describe('<App />', () => {
     })
     sortedMovies = [...moviesMock].sort(
       (movie1, movie2) =>
-        movie1.fields[SORT_VALUES.RELEASE_DATE] -
-        movie2.fields[SORT_VALUES.RELEASE_DATE]
+        new Date(movie1.fields[SORT_VALUES.RELEASE_DATE]).getTime() -
+        new Date(movie2.fields[SORT_VALUES.RELEASE_DATE]).getTime()
     )
     renderedMoviesMatchExpected(wrapper, sortedMovies)
   })
