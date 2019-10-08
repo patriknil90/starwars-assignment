@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { fetchMovies } from 'actions/movies'
 import Sort from 'components/Sort'
 import Filter from 'components/Filter'
+import MovieDescription from 'components/MovieDescription'
 
 class App extends React.Component {
   componentDidMount = () => this.props.fetchMovies()
@@ -17,7 +18,7 @@ class App extends React.Component {
       </header>
       <main>
         <MovieList />
-        <section className="MovieDescription">Movie Description</section>
+        <MovieDescription />
       </main>
     </div>
   )
