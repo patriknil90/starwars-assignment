@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
     case SET_FILTER_VALUE:
       return { ...state, filterValue: action.filterValue }
     case SET_SELECTED_MOVIE:
-      return { ...state, selected: action.movieId }
+      return { ...state, selectedMovieId: action.movieId }
     default:
       return state
   }
