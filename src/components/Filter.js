@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { filterMovies } from 'actions/movies'
+import './Filter.scss'
 
 const Filter = ({ filterMovies }) => {
   const onFilterChange = e => {
@@ -10,7 +11,12 @@ const Filter = ({ filterMovies }) => {
 
   return (
     <div id="Filter">
-      <input onChange={onFilterChange} id="Filter_input" type="text" />
+      <input
+        onChange={onFilterChange}
+        id="Filter_input"
+        placeholder="Search movie..."
+        type="text"
+      />
     </div>
   )
 }
