@@ -98,4 +98,29 @@ describe('<App />', () => {
       moviesMock[2],
     ])
   })
+
+  it('displays selected movie details', () => {
+    wrapper.update()
+
+    const movieDescriptionEl = wrapper.find('#MovieDescription')
+    expect(movieDescriptionEl.render().text()).toBe('No movie selected')
+
+    wrapper
+      .find('li')
+      .at(2)
+      .simulate('click')
+
+    const movieTitle = wrapper.find('#MovieDescription_title')
+    const movieOpeningCrawl = wrapper.find('#MovieDescription_opening-crawl')
+    const movieDirector = wrapper.find('#MovieDescription_director')
+
+    const expectedSelectedMovie = moviesMock[2]
+    expect(movieTitle.render().text()).toBe(expectedSelectedMovie.fields.title)
+    expect(movieOpeningCrawl.render().text()).toBe(
+      expectedSelectedMovie.fields.opening_crawl
+    )
+    expect(movieDirector.render().text()).toBe(
+      expectedSelectedMovie.fields.director
+    )
+  })
 })
